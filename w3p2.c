@@ -1,9 +1,9 @@
 /*/////////////////////////////////////////////////////////////////////////
                           Workshop - #3 (P2)
-Full Name  : 
-Student ID#: 
-Email      : 
-Section    : 
+Full Name  : Karoly Nemeth
+Student ID#: 021949144
+Email      : nemeth@myseneca.ca
+Section    : NDD
 
 Authenticity Declaration:
 I declare this submission is the result of my own work and has not been
@@ -58,7 +58,7 @@ int main(void)
     scanf(" %c", &suggestCream3);
     printf("\n");
 
-    //comment
+    //Create chart to display coffee products with user input
     printf("---+------------------------+---------------+-------+\n");
     printf("   |    Coffee              |  Packaged     | Best  |\n");
     printf("   |     Type               | Bag Weight    | Served|\n");
@@ -78,8 +78,10 @@ int main(void)
         (typeCoffee3 == 'm' || typeCoffee3 == 'M'), (typeCoffee3 == 'r' || typeCoffee3 == 'R'), weight3,
         (weight3 / GRAMS_IN_LBS), (suggestCream3 == 'y' || suggestCream3 == 'Y'));
 
+    // Print header
     printf("Enter how you like your coffee...\n\n");
 
+    //Request user input for coffee preference
     printf("Coffee strength ([L]ight, [M]edium, [R]ich): ");
     scanf(" %c", &coffeeStrenght);
     printf("Do you like your coffee with cream ([Y]es,[N]o): ");
@@ -90,46 +92,89 @@ int main(void)
 
     printf("The below table shows how your preferences align to the available products:\n\n");
 
+    //Display chart which shows what coffee product best suits user preference
+    //I added SPLIT CODE LINES to the lines of code to make sure it is not long
     printf("--------------------+-------------+-------+\n");
     printf("  |     Coffee      |  Packaged   | With  |\n");
     printf("ID|      Type       | Bag Weight  | Cream |\n");
     printf("--+-----------------+-------------+-------+\n");
-    printf(" 1|       %d         |      %d      |   d   |\n",
+    printf(" 1|       %d         |      %d      |   %d   |\n",
         ((typeCoffee1 == 'l' || typeCoffee1 == 'L') && (coffeeStrenght == 'l' || coffeeStrenght == 'L')) ||
+        ((typeCoffee1 == 'm' || typeCoffee1 == 'M') && (coffeeStrenght == 'm' || coffeeStrenght == 'M')) ||
+        ((typeCoffee1 == 'r' || typeCoffee1 == 'R') && (coffeeStrenght == 'r' || coffeeStrenght == 'R')),
+        ((dailyServing >= 1 && dailyServing <= 4) && (weight1 >= 0 && weight1 <= 250)) ||
+        ((dailyServing > 4 && dailyServing <= 9) && (weight1 > 250 && weight1 <= 500)) ||
+        (dailyServing >= 10 && (weight1 > 500 && weight1 <= 1000)),
+        ((suggestCream1 == 'Y' || suggestCream1 == 'y') && (coffeeCream == 'Y' || coffeeCream == 'y')) ||
+        ((suggestCream1 == 'N' || suggestCream1 == 'n') && (coffeeCream == 'N' || coffeeCream == 'n')));
+    printf(" 2|       %d         |      %d      |   %d   |\n",
+        ((typeCoffee2 == 'l' || typeCoffee2 == 'L') && (coffeeStrenght == 'l' || coffeeStrenght == 'L')) ||
         ((typeCoffee2 == 'm' || typeCoffee2 == 'M') && (coffeeStrenght == 'm' || coffeeStrenght == 'M')) ||
-        ((typeCoffee3 == 'r' || typeCoffee3 == 'R') && (coffeeStrenght == 'r' || coffeeStrenght == 'R')));
+        ((typeCoffee2 == 'r' || typeCoffee2 == 'R') && (coffeeStrenght == 'r' || coffeeStrenght == 'R')),
+        ((dailyServing >= 1 && dailyServing <= 4) && (weight2 >= 0 && weight2 <= 250)) ||
+        ((dailyServing > 4 && dailyServing <= 9) && (weight2 > 250 && weight2 <= 500)) ||
+        (dailyServing >= 10 && (weight2 > 500 && weight2 <= 1000)),
+        ((suggestCream2 == 'Y' || suggestCream2 == 'y') && (coffeeCream == 'Y' || coffeeCream == 'y')) ||
+        ((suggestCream2 == 'N' || suggestCream2 == 'n') && (coffeeCream == 'N' || coffeeCream == 'n')));
+    printf(" 3|       %d         |      %d      |   %d   |\n\n",
+        ((typeCoffee3 == 'l' || typeCoffee3 == 'L') && (coffeeStrenght == 'l' || coffeeStrenght == 'L')) ||
+        ((typeCoffee3 == 'm' || typeCoffee3 == 'M') && (coffeeStrenght == 'm' || coffeeStrenght == 'M')) ||
+        ((typeCoffee3 == 'r' || typeCoffee3 == 'R') && (coffeeStrenght == 'r' || coffeeStrenght == 'R')),
+        ((dailyServing >= 1 && dailyServing <= 4) && (weight3 >= 0 && weight3 <= 250)) ||
+        ((dailyServing > 4 && dailyServing <= 9) && (weight3 > 250 && weight3 <= 500)) ||
+        (dailyServing >= 10 && (weight3 > 500 && weight3 <= 1000)),
+        ((suggestCream3 == 'Y' || suggestCream3 == 'y') && (coffeeCream == 'Y' || coffeeCream == 'y')) ||
+        ((suggestCream3 == 'N' || suggestCream3 == 'n') && (coffeeCream == 'N' || coffeeCream == 'n')));
 
+    printf("Enter how you like your coffee...\n\n");
 
+    //Request user input for preference of coffee
+    printf("Coffee strength ([L]ight, [M]edium, [R]ich): ");
+    scanf(" %c", &coffeeStrenght);
+    printf("Do you like your coffee with cream ([Y]es,[N]o): ");
+    scanf(" %c", &coffeeCream);
+    printf("Typical number of daily servings: ");
+    scanf(" %d", &dailyServing);
+    printf("\n\n");
 
+    printf("The below table shows how your preferences align to the available products:\n\n");
+    
+    //Display chart to best show which product best suits user preference #2
+    //I added SPLIT CODE LINE to make sure lines of code are not long
+    printf("--------------------+-------------+-------+\n");
+    printf("  |     Coffee      |  Packaged   | With  |\n");
+    printf("ID|      Type       | Bag Weight  | Cream |\n");
+    printf("--+-----------------+-------------+-------+\n");
+    printf(" 1|       %d         |      %d      |   %d   |\n",
+        ((typeCoffee1 == 'l' || typeCoffee1 == 'L') && (coffeeStrenght == 'l' || coffeeStrenght == 'L')) ||
+        ((typeCoffee1 == 'm' || typeCoffee1 == 'M') && (coffeeStrenght == 'm' || coffeeStrenght == 'M')) ||
+        ((typeCoffee1 == 'r' || typeCoffee1 == 'R') && (coffeeStrenght == 'r' || coffeeStrenght == 'R')),
+        ((dailyServing >= 1 && dailyServing <= 4) && (weight1 >= 0 && weight1 <= 250)) ||
+        ((dailyServing > 4 && dailyServing <= 9) && (weight1 > 250 && weight1 <= 500)) ||
+        (dailyServing >= 10 && (weight1 > 500 && weight1 <= 1000)),
+        ((suggestCream1 == 'Y' || suggestCream1 == 'y') && (coffeeCream == 'Y' || coffeeCream == 'y')) ||
+        ((suggestCream1 == 'N' || suggestCream1 == 'n') && (coffeeCream == 'N' || coffeeCream == 'n')));
+    printf(" 2|       %d         |      %d      |   %d   |\n",
+        ((typeCoffee2 == 'l' || typeCoffee2 == 'L') && (coffeeStrenght == 'l' || coffeeStrenght == 'L')) ||
+        ((typeCoffee2 == 'm' || typeCoffee2 == 'M') && (coffeeStrenght == 'm' || coffeeStrenght == 'M')) ||
+        ((typeCoffee2 == 'r' || typeCoffee2 == 'R') && (coffeeStrenght == 'r' || coffeeStrenght == 'R')),
+        ((dailyServing >= 1 && dailyServing <= 4) && (weight2 >= 0 && weight2 <= 250)) ||
+        ((dailyServing > 4 && dailyServing <= 9) && (weight2 > 250 && weight2 <= 500)) ||
+        (dailyServing >= 10 && (weight2 > 500 && weight2 <= 1000)),
+        ((suggestCream2 == 'Y' || suggestCream2 == 'y') && (coffeeCream == 'Y' || coffeeCream == 'y')) ||
+        ((suggestCream2 == 'N' || suggestCream2 == 'n') && (coffeeCream == 'N' || coffeeCream == 'n')));
+    printf(" 3|       %d         |      %d      |   %d   |\n\n",
+        ((typeCoffee3 == 'l' || typeCoffee3 == 'L') && (coffeeStrenght == 'l' || coffeeStrenght == 'L')) ||
+        ((typeCoffee3 == 'm' || typeCoffee3 == 'M') && (coffeeStrenght == 'm' || coffeeStrenght == 'M')) ||
+        ((typeCoffee3 == 'r' || typeCoffee3 == 'R') && (coffeeStrenght == 'r' || coffeeStrenght == 'R')),
+        ((dailyServing >= 1 && dailyServing <= 4) && (weight3 >= 0 && weight3 <= 250)) ||
+        ((dailyServing > 4 && dailyServing <= 9) && (weight3 > 250 && weight3 <= 500)) ||
+        (dailyServing >= 10 && (weight3 > 500 && weight3 <= 1000)),
+        ((suggestCream3 == 'Y' || suggestCream3 == 'y') && (coffeeCream == 'Y' || coffeeCream == 'y')) ||
+        ((suggestCream3 == 'N' || suggestCream3 == 'n') && (coffeeCream == 'N' || coffeeCream == 'n')));
 
-
-
-
-
-
+    printf("Hope you found a product that suits your likes!\n");
 
 
  return 0;
 }
-
-
-
-
-
-
-/*
-        ((coffeeStrenght == 'l' || coffeeStrenght == 'L') && (typeCoffee1 == 'l' || typeCoffee1 == 'L'))*
-        ((coffeeStrenght == 'm' || coffeeStrenght == 'M') && (typeCoffee2 == 'm' || typeCoffee2 == 'M'))*
-        ((coffeeStrenght == 'r' || coffeeStrenght == 'R') && (typeCoffee3 == 'r' || typeCoffee3 == 'R')));
-
-Provided formatting parts for printf statements:
-
-As described in step-7
-======================
-printf(" 1 |   %d   |   %d    |   %d   | %4d | %6.3lf |   %d   |\n",
-
-As described in step-10
-=======================
-printf(" 1|       %d         |      %d      |   %d   |\n",
-
-*/
