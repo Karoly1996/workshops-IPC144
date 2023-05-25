@@ -1,0 +1,26 @@
+*****************************************************************************
+<assessment name example: Workshop - #1 (Part-1)>
+
+
+Full Name : Karoly Nemeth
+Student ID#: 021949144
+Email : knemeth@myseneca.ca
+Section : NDD
+
+
+Authenticity Declaration:
+I declare this submission is the result of my own work and has not been
+shared with any other student or 3rd party content provider. This submitted
+piece of work is entirely of my own creation.
+*****************************************************************************
+
+
+
+
+1. I have almost 2 months of previous programming experience. I started to work on my own projects in order to build my portfolio on github and land a co-op position and a job after completing my CPA education. I started with HTML and CSS to get familiar with the front-end part of programming and once I felt comfortable with HTML and CSS I moved onto Javascript, C and soon I will start to learn React in order to get more familiar with back-end development. 
+
+
+2. Compiling a C text file will allow it to be a machine code. Once a C text file is compiled it will allow our machine to read the code and be able to run on our machine. The process of the compiler is File>Preprocessor>compile>object code>executable file. 
+
+
+3. With this course I would like to continue learning and better my skills in programming. The course gives me a chance to practice and ask questions when I feel lost. My goal is to have a more clear understanding on how code is written and read. My expectations are to understand what the course has to offer and apply it to other languages and programming experiences for later in the future.
