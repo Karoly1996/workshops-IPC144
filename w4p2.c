@@ -21,162 +21,170 @@ int main(void)
     int currentApples, currentOranges, currentPears, currentTomatoes, currentCabbages;
     int continueShopping = 1;
 
-    printf("header\n");
-    printf("header\n");
+    while (continueShopping == 1) {
+        printf("Grocery Shopping\n");
+        printf("================\n");
 
-    while (1) {
-        printf("How many apples?: ");
-        scanf("%d", &totalApples);
+        while (1) {
+            printf("How many apples?: ");
+            scanf("%d", &totalApples);
 
-        if (totalApples < 0) {
-            printf("error\n");
-        } else {
-            break;
-        }  
-    }
-    printf("\n");
-     while (1) {
-        printf("How many oranges?: ");
-        scanf("%d", &totalOranges);
-
-        if (totalOranges < 0) {
-            printf("error\n");
-        } else {
-            break;
-        }  
-    }
-     printf("\n");
-     while (1) {
-        printf("How many PEARS?: ");
-        scanf("%d", &totalPears);
-
-        if (totalPears < 0) {
-            printf("error\n");
-        } else {
-            break;
-        } 
-    }
-     printf("\n");
-     while (1) {
-        printf("How many tomatoes?: ");
-        scanf("%d", &totalTomatoes);
-
-        if (totalTomatoes < 0) {
-            printf("error\n");
-        } else {
-            break;
-        }  
-    }
-     printf("\n");
-     while (1) {
-        printf("How many CABBAGES?: ");
-        scanf("%d", &totalCabbages);
-
-        if (totalCabbages < 0) {
-            printf("error\n");
-        } else {
-            break;
-        }  
-    }
-    printf("\n");
-
-    printf("--------------------------\n");
-    printf("Time to pick the products!\n");
-    printf("--------------------------\n\n");
-
-    //apples
-    while (totalApples > 0) {
-        printf("Pick some APPLES... how many did you pick? : ");
-        scanf("%d", &currentApples);
-
-        if (currentApples < 1) {
-            printf("ERROR: You must pick at least 1!\n");
-            continue;
-        } if (currentApples > totalApples) {
-            printf("You picked too many... only %d more APPLE(S) are needed.\n", totalApples);
-            continue;
-        } 
-        totalApples -= currentApples;
-        if (totalApples > 0) {
-            printf("Looks like we still need some APPLES...\n");
-        } else {
-            printf("Great, that's the apples done!\n\n");
+            if (totalApples < 0) {
+                printf("ERROR: Value must be 0 or more.\n");
+            } else {
+                break;
+            }  
         }
-    }
-    //oranges
-    while (totalOranges > 0) {
-        printf("Pick some ORANGES... how many did you pick? : ");
-        scanf("%d", &currentOranges);
+        printf("\n");
+        while (1) {
+            printf("How many oranges?: ");
+            scanf("%d", &totalOranges);
 
-        if (currentOranges < 1) {
-            printf("ERROR: You must pick at least 1!\n");
-            continue;
-        } if (currentOranges > totalOranges) {
-            printf("You picked too many... only %d more ORANGE(S) are needed.\n", totalOranges);
-            continue;
-        } 
-        totalOranges -= currentOranges;
-        if (totalOranges > 0) {
-            printf("Looks like we still need some ORANGE...\n");
-        } else {
-            printf("Great, that's the oranges done!\n\n");
+            if (totalOranges < 0) {
+                printf("ERROR: Value must be 0 or more.\n");
+            } else {
+                break;
+            }  
         }
-    }
-    //pears
-    while (totalPears > 0) {
-        printf("Pick some PEARS.. how many did you pick? : ");
-        scanf("%d", &currentPears);
+        printf("\n");
+        while (1) {
+            printf("How many PEARS?: ");
+            scanf("%d", &totalPears);
 
-        if (currentPears < 1) {
-            printf("ERROR: You must pick at least 1!\n");
-            continue;
-        } if (currentPears > totalPears) {
-            printf("You picked too many... only %d more PEAR(S) are needed.\n", totalPears);
-            continue;
-        } 
-        totalPears -= currentPears;
-        if (totalPears > 0) {
-            printf("Looks like we still need some PEARS...\n");
-        } else {
-            printf("Great, that's the pears done!\n\n");
+            if (totalPears < 0) {
+                printf("ERROR: Value must be 0 or more.\n");
+            } else {
+                break;
+            } 
         }
-    }
-    //tomatoes
-    while (totalTomatoes > 0) {
-        printf("Pick some TOMATOES... how many did you pick? : ");
-        scanf("%d", &currentTomatoes);
+        printf("\n");
+        while (1) {
+            printf("How many tomatoes?: ");
+            scanf("%d", &totalTomatoes);
 
-        if (currentTomatoes < 1) {
-            printf("ERROR: You must pick at least 1!\n");
-            continue;
-        } if (currentTomatoes > totalTomatoes) {
-            printf("You picked too many... only %d more TOMATOE(S) are needed.\n", totalTomatoes);
-            continue;
-        } 
-        totalTomatoes -= currentTomatoes;
-        if (totalTomatoes > 0) {
-            printf("Looks like we still need some TOMATOES...\n");
-        } else {
-            printf("Great, that's the tomatoes done!\n\n");
+            if (totalTomatoes < 0) {
+                printf("ERROR: Value must be 0 or more.\n");
+            } else {
+                break;
+            }  
         }
-    }
-    //cabbages
-    while (totalCabbages > 0) {
-        printf("Pick some CABBAGES... how many did you pick? : ");
-        scanf("%d", &currentCabbages);
+        printf("\n");
+        while (1) {
+            printf("How many CABBAGES?: ");
+            scanf("%d", &totalCabbages);
 
-        if (currentCabbages < 1) {
-            printf("ERROR: You must pick at least 1!\n");
-            continue;
-        } if (currentCabbages > totalCabbages) {
-            printf("You picked too many... only %d more CABBAGE(S) are needed.\n", totalCabbages);
-            continue;
-        } 
-        totalCabbages -= currentCabbages;
-        if (totalCabbages > 0) {
-            printf("Looks like we still need some CABBAGE...\n");
-        } else {
-            printf("Great, that's the cabbages done!\n\n");
+            if (totalCabbages < 0) {
+                printf("ERROR: Value must be 0 or more.\n");
+            } else {
+                break;
+            }  
+        }
+        printf("\n");
+
+        printf("--------------------------\n");
+        printf("Time to pick the products!\n");
+        printf("--------------------------\n\n");
+
+        //apples
+        while (totalApples > 0) {
+            printf("Pick some APPLES... how many did you pick? : ");
+            scanf("%d", &currentApples);
+
+            if (currentApples < 1) {
+                printf("ERROR: You must pick at least 1!\n");
+                continue;
+            } if (currentApples > totalApples) {
+                printf("You picked too many... only %d more APPLE(S) are needed.\n", totalApples);
+                continue;
+            } 
+            totalApples -= currentApples;
+            if (totalApples > 0) {
+                printf("Looks like we still need some APPLES...\n");
+            } else {
+                printf("Great, that's the apples done!\n\n");
+            }
+        }
+        //oranges
+        while (totalOranges > 0) {
+            printf("Pick some ORANGES... how many did you pick? : ");
+            scanf("%d", &currentOranges);
+
+            if (currentOranges < 1) {
+                printf("ERROR: You must pick at least 1!\n");
+                continue;
+            } if (currentOranges > totalOranges) {
+                printf("You picked too many... only %d more ORANGE(S) are needed.\n", totalOranges);
+                continue;
+            } 
+            totalOranges -= currentOranges;
+            if (totalOranges > 0) {
+                printf("Looks like we still need some ORANGE...\n");
+            } else {
+                printf("Great, that's the oranges done!\n\n");
+            }
+        }
+        //pears
+        while (totalPears > 0) {
+            printf("Pick some PEARS.. how many did you pick? : ");
+            scanf("%d", &currentPears);
+
+            if (currentPears < 1) {
+                printf("ERROR: You must pick at least 1!\n");
+                continue;
+            } if (currentPears > totalPears) {
+                printf("You picked too many... only %d more PEAR(S) are needed.\n", totalPears);
+                continue;
+            } 
+            totalPears -= currentPears;
+            if (totalPears > 0) {
+                printf("Looks like we still need some PEARS...\n");
+            } else {
+                printf("Great, that's the pears done!\n\n");
+            }
+        }
+        //tomatoes
+        while (totalTomatoes > 0) {
+            printf("Pick some TOMATOES... how many did you pick? : ");
+            scanf("%d", &currentTomatoes);
+
+            if (currentTomatoes < 1) {
+                printf("ERROR: You must pick at least 1!\n");
+                continue;
+            } if (currentTomatoes > totalTomatoes) {
+                printf("You picked too many... only %d more TOMATOE(S) are needed.\n", totalTomatoes);
+                continue;
+            } 
+            totalTomatoes -= currentTomatoes;
+            if (totalTomatoes > 0) {
+                printf("Looks like we still need some TOMATOES...\n");
+            } else {
+                printf("Great, that's the tomatoes done!\n\n");
+            }
+        }
+        //cabbages
+        while (totalCabbages > 0) {
+            printf("Pick some CABBAGES... how many did you pick? : ");
+            scanf("%d", &currentCabbages);
+
+            if (currentCabbages < 1) {
+                printf("ERROR: You must pick at least 1!\n");
+                continue;
+            } if (currentCabbages > totalCabbages) {
+                printf("You picked too many... only %d more CABBAGE(S) are needed.\n", totalCabbages);
+                continue;
+            } 
+            totalCabbages -= currentCabbages;
+            if (totalCabbages > 0) {
+                printf("Looks like we still need some CABBAGE...\n");
+            } else {
+                printf("Great, that's the cabbages done!\n\n");
+            }
+        }
+        printf("All the items are picked!\n\n");
+        printf("Do another shopping? (0=NO): ");
+        scanf("%d", &continueShopping);
+        if (continueShopping == 0) {
+            printf("\nYour tasks are done for today - enjoy your free time!\n\n");
         }
     }
 
