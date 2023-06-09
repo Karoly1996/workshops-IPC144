@@ -41,102 +41,107 @@ int main(void)
         //Checking to make sure year is equal to or between 2012 and 2022
         if (year < MIN_YEAR || year > MAX_YEAR) {
             //Print error if user inputs under 2012 or over 2022
-            printf("ERROR: The year must be between 2012 and 2022 inclusive\n");
+            //split line to stay under 80 characters
+            printf("   ERROR: The year must be between "
+            "2012 and 2022 inclusive\n");
             //Checks to see if user inputs a month between 1 and 12
         } if (month < JAN || month > DEC) {
             //Print error message if its not between 1 and 12
-            printf("ERROR: Jan.(1) - Dec.(12)\n");
+            printf("   ERROR: Jan.(1) - Dec.(12)\n");
             //Checks to see if both year and months are valid inputs
         } else if ((year >= MIN_YEAR && year <= MAX_YEAR) &&
         //split lines to stay under 80 characters
          (month >= JAN && month <= DEC)) {
             printf("\n");
-            printf(">*** Log date set! ***\n\n");
+            printf("*** Log date set! ***\n\n");
 
             //For loop to display each logged days required throughout the month
             for (day = 1; day <= LOG_DAYS; day++) {
                 //display each month with the year, 3 letters of the momnth and day
                 switch (month) {
                 case 1:
-                    printf("%d-JAN-%d\n", year, day);
+                    printf("%d-JAN-%02d\n", year, day);
                     break;
                 case 2:
-                    printf("%d-FEB-%d\n", year, day);
+                    printf("%d-FEB-%02d\n", year, day);
                     break;
                 case 3:
-                    printf("%d-MAR-%d\n", year, day);
-                    break;
+                    printf("%d-MAR-%02d\n", year, day);
+                    break;  
                 case 4:
-                    printf("%d-APR-%d\n", year, day);
+                    printf("%d-APR-%02d\n", year, day);
                     break;
                 case 5:
-                    printf("%d-MAY-%d\n", year, day);
+                    printf("%d-MAY-%02d\n", year, day);
                     break;
                 case 6:
-                    printf("%d-JUN-%d\n", year, day);
+                    printf("%d-JUN-%02d\n", year, day);
                     break;
                 case 7:
-                    printf("%d-JUL-%d\n", year, day);
+                    printf("%d-JUL-%02d\n", year, day);
                     break;
                 case 8:
-                    printf("%d-AUG-%d\n", year, day);
+                    printf("%d-AUG-%02d\n", year, day);
                     break;
                 case 9:
-                    printf("%d-SEP-%d\n", year, day);
+                    printf("%d-SEP-%02d\n", year, day);
                     break;
                 case 10:
-                    printf("%d-OCT-%d\n", year, day);
+                    printf("%d-OCT-%02d\n", year, day);
                     break;
                 case 11:
-                    printf("%d-NOV-%d\n", year, day);
+                    printf("%d-NOV-%02d\n", year, day);
                     break;
                 case 12:
-                    printf("%d-DEC-%d\n", year, day);
+                    printf("%d-DEC-%02d\n", year, day);
                     break;
                 }
                 //Request morning rating from user
                 do
                 {
-                    printf("Morning rating (0.0-5.0): ");
+                    printf("   Morning rating (0.0-5.0): ");
                     scanf("%lf", &morningRate);
-                    //Check if user input is valid, If not display error message on screen
+                    /*Check if user input is valid,
+                    If not display error message on screen*/
                     if (morningRate < 0.0 || morningRate > 5.0){
-                        printf("ERROR: Rating must be between 0.0 and 5.0 inclusive!\n");
+                        printf("      ERROR: Rating must be between "
+                        "0.0 and 5.0 inclusive!\n");
                     }
                     //If morning rating is valid got to next step
                 } while (morningRate < 0.0 || morningRate > 5.0);
                 //Request user input for evening rating
                 do
                 {
-                    printf("Evening rating (0.0-5.0): ");
+                    printf("   Evening rating (0.0-5.0): ");
                     scanf("%lf", &eveningRate);
                     //Check if user input is valid, if not print error
                     if (eveningRate < 0.0 || eveningRate > 5.0){
-                        printf("ERROR: Rating must be between 0.0 and 5.0 inclusive!\n");
+                        printf("      ERROR: Rating must be between "
+                        "0.0 and 5.0 inclusive!\n");
                     }
                     //If true continue
                 } while (eveningRate < 0.0 || eveningRate > 5.0);
+                printf("\n");
                 //Calulating the sum for both morning and evening rate
                 morningSum += morningRate;
                 eveningSum += eveningRate;
             }
-            printf("\n");
             //Header for the summary
             printf("Summary\n");
             printf("=======\n");
             //display morning and evening sum to 0.3 decimal place
             printf("Morning total rating: %.3lf\n", morningSum);
-            printf("Evening total rating: %.3lf\n", eveningSum);
+            printf("Evening total rating:  %.3lf\n", eveningSum);
             printf("----------------------------\n");
             //display the overall rating by adding both morning and evening sum
             printf("Overall total rating: %.3lf\n\n", morningSum + eveningSum);
             //Calculate and display both morning and evening sum average rating
-            printf("Average morning rating: %.1lf\n", morningSum / LOG_DAYS);
-            printf("Average evening rating: %.1lf\n", eveningSum / LOG_DAYS);
+            printf("Average morning rating:  %.1lf\n", morningSum / LOG_DAYS);
+            printf("Average evening rating:  %.1lf\n", eveningSum / LOG_DAYS);
             printf("----------------------------\n");
             //calculate morning and evening sum overall rating 
             //split line to keep it under 80 characters
-            printf("Average overall rating: %.1lf\n\n",
+            printf("Average overall rating:  %.1lf\n\n",
                 (morningSum + eveningSum) / (LOG_DAYS * 2));
             //End the loop 
             continueLoop = 0;
