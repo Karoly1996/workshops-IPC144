@@ -37,20 +37,23 @@ int main(void)
         //Checking to make sure year is equal to or between 2012 and 2022
         if (year < MIN_YEAR || year > MAX_YEAR) {
             //Print error if user inputs under 2012 or over 2022
-            printf("ERROR: The year must be between 2012 and 2022 inclusive\n");
+            printf
+            ("   ERROR: The year must be between 2012 and 2022 inclusive\n");
             //Checks to see if user inputs a month between 1 and 12
         } if (month < JAN || month > DEC) {
             //Print error message if its not between 1 and 12
-            printf("ERROR: Jan.(1) - Dec.(12)\n");
+            printf("   ERROR: Jan.(1) - Dec.(12)\n");
             //Checks to see if both year and months are valid inputs
-        } else if ((year >= MIN_YEAR && year <= MAX_YEAR) && (month >= JAN && month <= DEC)) { 
+        } else if ((year >= MIN_YEAR && year <= MAX_YEAR) &&
+        //split lines to stay under 80 characters
+         (month >= JAN && month <= DEC)) {
             printf("\n");
-            printf(">*** Log date set! ***\n\n");
+            printf("*** Log date set! ***\n\n");
             
             
             //Using switch statements to check each case individually
             switch (month) {
-                //Display the 3 letter month depending which month user input
+                //Display the 3 letter month depending on which month user input
             case 1:
                 printf("Log starting date: %d-JAN-01\n", year);
                 break;
