@@ -26,15 +26,6 @@ int main(void)
     //variables
     double income, totalCost;
     int wishList;
-    //Array variables
-    int i;
-    double cost[wishList];
-    int priority[wishList];
-    char finance[wishList];
-
-    
-
-
 
     //header
     printf("+--------------------------+\n");
@@ -70,10 +61,16 @@ int main(void)
     } while (!(wishList >= MIN_ITEMS && wishList <= MAX_ITEMS));
     printf("\n");
 
+    //Array variables
+    int i;
+    double cost[wishList];
+    int priority[wishList];
+    char finance[wishList];
+
     //start a loop to request user input for item cost, priority, and finance
-    for (i = 0; i < wishList; i++) {
+    for (i = 1; i <= wishList; i++) {
         //display item wish list item number
-        printf("item-%d Details:\n", i + 1);
+        printf("item-%d Details:\n", i);
 
         //do cost loop
         do {
@@ -108,13 +105,13 @@ int main(void)
         printf("Item Priority Financed        Cost\n");
         printf("---- -------- -------- -----------\n");
         
-        for (i = 0; i <= wishList; i++) {
-            printf("  %d      %d        %c     %.2lf\n", i + 1, priority[i], finance[i], cost[i]);
+        for (i = 1; i <= wishList; i++) {
+            printf("  %d      %d        %c    %11.2lf\n", i, priority[i], finance[i], cost[i]);
             totalCost += cost[i];
         }
         //display total cost 
         printf("---- -------- -------- -----------\n");
-        printf("                       $%11.2lf\n", totalCost);
+        printf("                      $%11.2lf\n", totalCost);
         printf("\n");
         printf("Best of luck in all your future endeavours!\n\n");
 
