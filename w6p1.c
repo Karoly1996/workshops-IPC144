@@ -1,9 +1,9 @@
 /*/////////////////////////////////////////////////////////////////////////
                           Workshop - #6 (P1)
-Full Name  : 
-Student ID#: 
-Email      : 
-Section    : 
+Full Name  : Karoly Nemeth
+Student ID#: 021949144
+Email      : knemeth@myseneca.ca
+Section    : NDD
 
 Authenticity Declaration:
 I declare this submission is the result of my own work and has not been
@@ -40,9 +40,13 @@ int main(void)
 
         //print error message if user income input is not valid
         if (income < MIN_INCOME) {
-            printf("ERROR: You must have a consistent monthly income of at least $500.00\n\n");
+            //split line to not go over 80 characters
+            printf("ERROR: You must have a consistent monthly "
+                "income of at least $500.00\n\n");
         } if (income > MAX_INCOME) { //Display error if input is not valid
-            printf("ERROR: Liar! I'll believe you if you enter a value no more than $400000.00\n\n");
+            //split line to not go over 80 characters
+            printf("ERROR: Liar! I'll believe you if you "
+                "enter a value no more than $400000.00\n\n");
         }
         //stop loop once user income input is valid
     } while (income < MIN_INCOME || income > MAX_INCOME);
@@ -74,8 +78,10 @@ int main(void)
 
         //do cost loop
         do {
+            //request and scan user input
             printf("   Item cost: $");
             scanf("%lf", &cost[i]);
+            //print error if user input is invalid
             if (cost[i] < MIN_COST) {
                 printf("      ERROR: Cost must be at least $100.00\n");
             } 
@@ -83,8 +89,11 @@ int main(void)
 
         //do priority loop
         do {
-            printf("   How important is it to you? [1=must have, 2=important, 3=want]: ");
+            //request and scan user input 
+            printf("   How important is it to you? "
+                "[1=must have, 2=important, 3=want]: ");
             scanf("%d", &priority[i]);
+            //print error if user input is not valid
             if (priority[i] < 1 || priority[i] > 3) {
                 printf("      ERROR: Value must be between 1 and 3\n");
             }
@@ -93,8 +102,10 @@ int main(void)
         //do finance loop
         do
         {
+            //request and scan user input
             printf("   Does this item have financing options? [y/n]: ");
             scanf(" %c", &finance[i]);
+            //print error message if user input is not valid
             if (finance[i] != 'y' && finance[i] != 'n') {
                 printf("      ERROR: Must be a lowercase 'y' or 'n'\n");
             }
@@ -102,21 +113,23 @@ int main(void)
         printf("\n");
     }
 
+        //header for chart
         printf("Item Priority Financed        Cost\n");
         printf("---- -------- -------- -----------\n");
         
+        //print each item with the according priority, finance, and cost
         for (i = 1; i <= wishList; i++) {
-            printf("  %d      %d        %c    %11.2lf\n", i, priority[i], finance[i], cost[i]);
+            printf("  %d      %d        %c    %11.2lf\n", 
+            i, priority[i], finance[i], cost[i]);
+            //calculate total cost of all items
             totalCost += cost[i];
         }
         //display total cost 
         printf("---- -------- -------- -----------\n");
         printf("                      $%11.2lf\n", totalCost);
         printf("\n");
+
         printf("Best of luck in all your future endeavours!\n\n");
-
-
-
 
     return 0;
 }
