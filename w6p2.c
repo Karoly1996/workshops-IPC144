@@ -20,13 +20,14 @@ piece of work is entirely of my own creation.
 #define MIN_COST 100.00
 
 #include <stdio.h>
+#include <math.h>
 
 int main(void)
 {
     //variables
     double income, totalCost;
     int wishList;
-
+    
     //header
     printf("+--------------------------+\n");
     printf("+   Wish List Forecaster   |\n");
@@ -70,6 +71,7 @@ int main(void)
     double cost[wishList];
     int priority[wishList];
     char finance[wishList];
+    int financeNote = 0;
 
     //start a loop to request user input for item cost, priority, and finance
     for (i = 1; i <= wishList; i++) {
@@ -108,6 +110,8 @@ int main(void)
             //print error message if user input is not valid
             if (finance[i] != 'y' && finance[i] != 'n') {
                 printf("      ERROR: Must be a lowercase 'y' or 'n'\n");
+            } if (finance[i] == 'y') {
+                financeNote = 1;
             }
         } while (finance[i] != 'y' && finance[i] != 'n');
         printf("\n");
@@ -128,8 +132,55 @@ int main(void)
         printf("---- -------- -------- -----------\n");
         printf("                      $%11.2lf\n", totalCost);
         printf("\n");
+        
 
-        printf("Best of luck in all your future endeavours!\n\n");
+    //variables for select, year, month
+    int select, year, month;
+    int loop = 1;
+
+    //start loop for getting user input for selection
+    while (loop == 1) {
+        printf("How do you want to forecast your wish list?\n");
+        printf(" 1. All items (no filter)\n");
+        printf(" 2. By priority\n");
+        printf(" 0. Quit/Exit\n");
+        printf("Selection: ");
+        scanf("%d", &select);
+        printf("\n");
+        
+        if (select < 0 || select > 2) {
+            printf("ERROR: Invalid menu selection.\n\n");
+        } else if (select == 0) {
+            loop = 0;
+        }
+
+        //display selection 1 
+        if (select == 1) {
+            printf("====================================================\n");
+            printf("Filter:   All items\n");
+            printf("Amount:   $%1.2lf\n", totalCost);
+            //calculations for years and months
+            year = floor((int)totalCost / (income * 12));
+            month = ceil((int)(totalCost / income) % 12);
+            printf("Forecast: %d years, %d months\n", year, month);
+            //display finance note if 'y' is true
+            if (financeNote == 1) {
+                printf("NOTE: Financing options are available on some items.\n"
+                    "      You can likely reduce the estimated months.\n");
+            }
+            printf("====================================================\n\n");
+        }
+
+        //display selection 2
+        if (select == 2) {
+            
+        }
+
+
+
+
+    } 
+
 
     return 0;
 }

@@ -35,7 +35,7 @@ int main(void)
     //Loop to get user input until input is valid
     do {
         //request user income
-        printf("Enter your monthly NET income: ");
+        printf("Enter your monthly NET income: $");
         scanf("%lf", &income);
 
         //print error message if user income input is not valid
@@ -74,7 +74,7 @@ int main(void)
     //start a loop to request user input for item cost, priority, and finance
     for (i = 1; i <= wishList; i++) {
         //display item wish list item number
-        printf("item-%d Details:\n", i);
+        printf("Item-%d Details:\n", i);
 
         //do cost loop
         do {
