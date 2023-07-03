@@ -108,19 +108,64 @@ int main(void)
     
     //start loop for bomb
     for (int i = 0; i < game.path; i += 5) {
-        printf("Positions [%d-%d]: ", i + 1, i + 5);
+        printf("   Positions [%d-%d]: ", i + 1, i + 5);
         //get user input for bomb placement 
         scanf("%d %d %d %d %d", &game.bombs[i], &game.bombs[i + 1], 
         &game.bombs[i + 2], &game.bombs[i + 3], &game.bombs[i + 4]);
     } 
     printf("BOMB placement set\n\n");
 
+    //start treasure placement 
     printf("TREASURE Placement\n");
     printf("------------------\n");
+    printf("Enter the treasure placements in sets of 5 where a value\n");
+    printf("of 1=TREASURE, and 0=NO TREASURE. Space-delimit your input.\n");
+    printf("(Example: 1 0 0 1 1) NOTE: there are %d to set!\n", game.path);
+
+    //Begin loop for treasure
+    for (int i = 0; i < game.path; i += 5) {
+        printf("   Positions [%d-%d]: ", i + 1, i + 5);
+        scanf("%d %d %d %d %d", &game.treasureLocation[i], &game.treasureLocation[i + 1], 
+        &game.treasureLocation[i + 2], &game.treasureLocation[i + 3], &game.treasureLocation[i + 4]);
+    }
+    printf("TREASURE placement set\n\n");
+    printf("GAME configuration set-up is complete...\n\n");
     
+    //display summary 
+    printf("------------------------------------\n");
+    printf("TREASURE HUNT Configuration Settings\n");
+    printf("------------------------------------\n");
+    //Player summary
+    printf("Player:\n");
+    printf("   Symbol : %c", player.symbol);
+    printf("   Lives      : %d\n", player.lives);
+    printf("   Treasure   : [ready for gameplay]\n");
+    printf("   History    : [ready for gameplay]\n\n");
+
+    //Game summary
+    printf("Game:\n");
+    printf("   Path Length: %d\n", game.path);
+
+    //bomb
+    printf("   Bombs      : ");
+    for (int b = 0; b < game.path; b++) {
+        printf("%d", game.bombs[b]);
+    }
+    printf("\n");
+    
+    //treasure 
+     printf("   Treasure   : ");
+     for (int t = 0; t < game.path; t++) {
+        printf("%d", game.treasureLocation[t]);
+     }
+     printf("\n\n");
+
+     printf("====================================\n");
+     printf("~ Get ready to play TREASURE HUNT! ~\n");
+     printf("====================================\n");
+
     
 
-
-
+    
     return 0;
 }
