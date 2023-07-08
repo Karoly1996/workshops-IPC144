@@ -260,9 +260,9 @@ int main(void)
         livesLeft, player.treasure, movesLeft);
         printf("+---------------------------------------------------+\n");
         
-        //if (livesLeft == 0 || movesLeft == 0) {
-            //break;
-        //}
+        if (livesLeft == 0 || movesLeft == 0) {
+            break;
+        }
 
         //Players move 
         do {
@@ -284,14 +284,48 @@ int main(void)
         } else if (game.bombs[playerMove - 1] == 1 && game.treasureLocation[playerMove - 1] == 1) {
             printf("===============> [&] !!! BOOOOOM !!! [&]\n");
             printf("===============> [&] $$$ Life Insurance Payout!!! [&]\n\n");
-            
+            itemPosition[playerMove - 1] = '&';
+            playerPosition[playerMove - 1] = player.symbol;
+            livesLeft--;
+            player.treasure++;
+        } else if (game.bombs[playerMove - 1] == 1) {
+            printf("===============> [!] !!! BOOOOOM !!! [!]\n\n");
+            itemPosition[playerMove - 1] = '!';
+            playerPosition[playerMove - 1] = player.symbol;
+            livesLeft--;
+        } else if (game.treasureLocation[playerMove - 1] == 1) {
+            printf("===============> [$] $$$ Found Treasure! $$$ [$]\n\n");
+            itemPosition[playerMove - 1] = '$';
+            playerPosition[playerMove - 1] = player.symbol;
+            player.treasure++;
+        } else {
+            printf("===============> [.] ...Nothing found here... [.]\n\n");
+            itemPosition[playerMove - 1] = '.';
+            playerPosition[playerMove - 1] = player.symbol;
+        }
+
+        //history of positions in array
+        player.pastPositions[playerMove - 1] = 1;
+        //Decrement moves
+        movesLeft--;
+
+        if (livesLeft == 0) {
+            printf("No more LIVES remaining!\n\n");
+        }
+        if (movesLeft == 0) {
+            printf("No more MOVES remaining!\n\n");
         }
 
     } while (movesLeft >= 0 && livesLeft >= 0);
 
-
-
-    
+    // Display Game over message 
+    printf("\n");
+    printf("##################\n");
+    printf("#   Game over!   #\n");
+    printf("##################\n");
+    printf("\n");
+    printf("You should play again and try to beat your score!\n");
+    printf("\n");
 
     
     return 0;
