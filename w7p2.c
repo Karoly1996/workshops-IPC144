@@ -1,5 +1,5 @@
 /*/////////////////////////////////////////////////////////////////////////
-                          Workshop - #7 (P1)
+                          Workshop - #7 (P2)
 Full Name  : Karoly Nemeth
 Student ID#: 021949144
 Email      : knemeth@myseneca.ca
@@ -41,9 +41,13 @@ struct Gameinfo {
 
 int main(void)
 {
-    //Declare player and game 
+    //Declare player and game and variables
     struct Playerinfo player;
     struct Gameinfo game;
+    int movesLeft, livesLeft;
+    int playerMove = MAX_PATH + 1;
+    char playerPosition[MAX_PATH], itemPosition[MAX_PATH];
+    
 
     //start header
     printf("================================\n");
@@ -109,7 +113,7 @@ int main(void)
     printf("(Example: 1 0 0 1 1) NOTE: there are %d to set!\n", game.path);
     
     //start loop for bomb
-    int i;
+    int i; 
     for (i = 0; i < game.path; i += 5) {
         printf("   Positions [%2d-%2d]: ", i + 1, i + 5);
         //get user input for bomb placement 
@@ -177,6 +181,115 @@ int main(void)
     printf("====================================\n");
     printf("~ Get ready to play TREASURE HUNT! ~\n");
     printf("====================================\n");
+
+    //Starting part 2
+    //t - gamepath gamelocation , b for gamepath gamebomb, j for gametreasure
+    // int movesLeft, livesLeft;
+    // char position[MAX_PATH], itemPosition[MAX_PATH];
+    
+
+    //declare values for part2
+    movesLeft = game.moves;
+    livesLeft = player.lives;
+    player.treasure = 0;
+    int symCount = 0;
+
+    //Current position initialization
+    for (t = 0; t < game.path; t++) {
+        playerPosition[t] = ' ';
+    }
+    //position history initialization 
+    for (j = 0; j < game.path; j++) {
+        player.pastPositions[j] = 0;
+    }
+    //item position initialization
+    for (t = 0; t < game.path; t++) {
+        itemPosition[t] = '-';
+    }
+
+    //display table
+    do {
+        //first line 
+        for (t = 0; t < game.path; t++) {
+            if (playerPosition[t] == player.symbol) {
+                symCount++;
+            }
+        } if (symCount == 0) {
+            printf("\n");
+        } else {
+            printf("  ");
+            for (t = 0; t < game.path; t++) {
+                if (playerPosition[t] == player.symbol) {
+                    printf("%c\n", playerPosition[t]);
+                    break;
+                } else {
+                    printf("%c", playerPosition[t]);
+                }
+            }
+        }
+        //clear current position of player
+        for (t = 0; t < game.path; t++) {
+            playerPosition[t] = ' ';
+        }
+        //line 2 
+        printf("  ");
+        for (t = 0; t < game.path; t++) {
+            printf("%c", itemPosition[t]);
+        }
+        printf("\n");
+        printf("  ");
+        //line 3
+        for (i = 1; i <= game.path; i++) {
+            if (i % 10 == 0) {
+                printf("%d", (int) i / 10);
+            } else {
+                printf("|");
+            }
+        }
+        printf("\n");
+        printf("  ");
+        //line 4
+        for (i = 0; i <game.path; i += 10) {
+            printf("1234567890");
+        }
+        printf("\n");
+
+        //player statistics
+        printf("+---------------------------------------------------+\n");
+        printf("  Lives: %2d  | Treasures: %2d  |  Moves Remaining: %2d\n",
+        livesLeft, player.treasure, movesLeft);
+        printf("+---------------------------------------------------+\n");
+        
+        //if (livesLeft == 0 || movesLeft == 0) {
+            //break;
+        //}
+
+        //Players move 
+        do {
+            printf("Next move [1-%d]: ", game.path);
+            scanf("%d", &playerMove);
+            
+            if (playerMove < 1 || playerMove > game.path) {
+                printf("  Out of Range!!!\n");
+            }
+        } while (playerMove < 1 || playerMove > game.path);
+        printf("\n");
+
+        //input players move 
+        if (player.pastPositions[playerMove - 1] == 1) {
+            printf("===============> Dope! You've been here before!\n\n");
+            playerPosition[playerMove - 1] = player.symbol;
+            //Reverse the decrementation after move is invalid
+            movesLeft++;
+        } else if (game.bombs[playerMove - 1] == 1 && game.treasureLocation[playerMove - 1] == 1) {
+            printf("===============> [&] !!! BOOOOOM !!! [&]\n");
+            printf("===============> [&] $$$ Life Insurance Payout!!! [&]\n\n");
+            
+        }
+
+    } while (movesLeft >= 0 && livesLeft >= 0);
+
+
 
     
 
