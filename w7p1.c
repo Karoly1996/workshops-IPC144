@@ -183,3 +183,18 @@ int main(void)
     
     return 0;
 }
+
+do
+{
+    for (t = 0; t < game.path; t++) 
+    {
+       if (playerPosition[t] == player.symbol)
+       {
+            else
+            {
+                
+            }
+       } 
+    }
+    for (t = 0; t < game.path; t++) {
+}

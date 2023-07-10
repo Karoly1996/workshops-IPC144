@@ -28,7 +28,7 @@ struct Playerinfo {
     int lives;
     char symbol;
     int treasure;
-    int pastPositions[MAX_LIVES];
+    int pastPositions[MAX_PATH];
 };
 struct Gameinfo {
     int moves;
@@ -46,7 +46,6 @@ int main(void)
     struct Gameinfo game;
     int movesLeft, livesLeft;
     int playerMove = MAX_PATH + 1;
-    char playerPosition[MAX_PATH], itemPosition[MAX_PATH];
     
 
     //start header
@@ -183,16 +182,13 @@ int main(void)
     printf("====================================\n");
 
     //Starting part 2
-    //t - gamepath gamelocation , b for gamepath gamebomb, j for gametreasure
-    // int movesLeft, livesLeft;
-    // char position[MAX_PATH], itemPosition[MAX_PATH];
-    
 
     //declare values for part2
     movesLeft = game.moves;
     livesLeft = player.lives;
     player.treasure = 0;
     int symCount = 0;
+    char playerPosition[MAX_PATH], itemPosition[MAX_PATH];
 
     //Current position initialization
     for (t = 0; t < game.path; t++) {
@@ -209,7 +205,7 @@ int main(void)
 
     //display table
     do {
-        //first line 
+        //first line loop
         for (t = 0; t < game.path; t++) {
             if (playerPosition[t] == player.symbol) {
                 symCount++;
@@ -217,7 +213,9 @@ int main(void)
         } if (symCount == 0) {
             printf("\n");
         } else {
+            //indent for new line
             printf("  ");
+            //display player symbol
             for (t = 0; t < game.path; t++) {
                 if (playerPosition[t] == player.symbol) {
                     printf("%c\n", playerPosition[t]);
@@ -241,7 +239,7 @@ int main(void)
         //line 3
         for (i = 1; i <= game.path; i++) {
             if (i % 10 == 0) {
-                printf("%d", (int) i / 10);
+                printf("%d", (int)i / 10);
             } else {
                 printf("|");
             }
@@ -266,9 +264,10 @@ int main(void)
 
         //Players move 
         do {
-            printf("Next move [1-%d]: ", game.path);
+            //request players input for move
+            printf("Next Move [1-%d]: ", game.path);
             scanf("%d", &playerMove);
-            
+            //display error if range is invalid
             if (playerMove < 1 || playerMove > game.path) {
                 printf("  Out of Range!!!\n");
             }
@@ -281,26 +280,37 @@ int main(void)
             playerPosition[playerMove - 1] = player.symbol;
             //Reverse the decrementation after move is invalid
             movesLeft++;
-        } else if (game.bombs[playerMove - 1] == 1 && game.treasureLocation[playerMove - 1] == 1) {
+            //split line to stay undeer 80 characters
+            //player bomb and treasure input
+        } else if (game.bombs[playerMove - 1] == 1 
+            && game.treasureLocation[playerMove - 1] == 1) {
             printf("===============> [&] !!! BOOOOOM !!! [&]\n");
-            printf("===============> [&] $$$ Life Insurance Payout!!! [&]\n\n");
+            printf("===============> [&] $$$ Life Insurance Payout!!! [&]\n");
+            printf("\n");
+            //represent both bomb and treasure
             itemPosition[playerMove - 1] = '&';
+            //player symbol
             playerPosition[playerMove - 1] = player.symbol;
             livesLeft--;
             player.treasure++;
         } else if (game.bombs[playerMove - 1] == 1) {
             printf("===============> [!] !!! BOOOOOM !!! [!]\n\n");
+            //represent bomb
             itemPosition[playerMove - 1] = '!';
+            //player symbol
             playerPosition[playerMove - 1] = player.symbol;
             livesLeft--;
         } else if (game.treasureLocation[playerMove - 1] == 1) {
             printf("===============> [$] $$$ Found Treasure! $$$ [$]\n\n");
+            //represent treasure
             itemPosition[playerMove - 1] = '$';
             playerPosition[playerMove - 1] = player.symbol;
             player.treasure++;
         } else {
             printf("===============> [.] ...Nothing found here... [.]\n\n");
+            //represent neither bomb or treasure
             itemPosition[playerMove - 1] = '.';
+            //player symbol
             playerPosition[playerMove - 1] = player.symbol;
         }
 
@@ -309,13 +319,15 @@ int main(void)
         //Decrement moves
         movesLeft--;
 
+        //display no lives remaining
         if (livesLeft == 0) {
             printf("No more LIVES remaining!\n\n");
         }
+        //Display no moves remaining
         if (movesLeft == 0) {
             printf("No more MOVES remaining!\n\n");
         }
-
+    //end loop once no lives or moves left
     } while (movesLeft >= 0 && livesLeft >= 0);
 
     // Display Game over message 
